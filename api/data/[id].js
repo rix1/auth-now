@@ -5,11 +5,17 @@ const secretStore = {
   'tomfa@otovo.com': { fisk: 1 },
 };
 
+const getToken = req => {
+  const authHeader = req.headers['Authorization'];
+  if (authHeader !== undefined && authHeader.split(' ').length > 1) {
+    return authHeader.split(' ')[1];
+  }
+  return req.query.token;
+};
+
 module.exports = (req, res) => {
-  const {
-    // TODO: Get token from auth header instead
-    query: { id, token },
-  } = req;
+  const { id } = req.query;
+  const token = getToken(req);
 
   try {
     const data = verify(token);
