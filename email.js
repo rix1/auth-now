@@ -1,4 +1,4 @@
-import * as auth from './auth';
+const auth = require('./auth');
 
 const EMAIL_DOMAIN = process.env.MAILGUN_DOMAIN;
 const generateVerifyEmailMessage = ({ email, hostDomain }) => {

@@ -1,5 +1,6 @@
-import * as mailgun from 'mailgun.js';
-import { generateVerifyEmailMessage } from "../../../email";
+const mailgun = require('mailgun.js');
+
+const { generateVerifyEmailMessage } = require('../../../email');
 
 const client = mailgun.client({
   username: 'api',
@@ -13,7 +14,10 @@ function sendMail(msg) {
 
 module.exports = (req, res) => {
   const { to: email } = req.query;
-  const msg = generateVerifyEmailMessage({ email, hostDomain: req.headers.host });
+  const msg = generateVerifyEmailMessage({
+    email,
+    hostDomain: req.headers.host,
+  });
   sendMail(msg)
     .then(response => {
       console.log(response);

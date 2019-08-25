@@ -1,6 +1,7 @@
-import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
-import * as auth from "../../auth";
-import * as permissions from "../../permissions";
+const { JsonWebTokenError, TokenExpiredError } = require('jsonwebtoken');
+
+const auth = require('../../auth');
+const permissions = require('../../permissions');
 
 const secretStore = {
   'tomfa@otovo.com': { fisk: 1 },
@@ -13,7 +14,10 @@ module.exports = (req, res) => {
   try {
     const data = auth.verify(token);
     if (data.permissions.indexOf(permissions.RETRIEVE_DATA) === -1) {
-      return res.status(403).json({status: 403, message: `This token is not authorized for ${permissions.RETRIEVE_DATA}`})
+      return res.status(403).json({
+        status: 403,
+        message: `This token is not authorized for ${permissions.RETRIEVE_DATA}`,
+      });
     }
     if (data.id !== id) {
       // TODO: Return 404 instead

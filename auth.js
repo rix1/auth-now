@@ -1,6 +1,6 @@
-import * as permissions from './permissions';
-
 const jwt = require('jsonwebtoken');
+
+const permissions = require('./permissions');
 
 const privateKey = process.env.JWT_PRIVATE_KEY;
 const issuer = process.env.JWT_ISSUER || 'auth-now';
