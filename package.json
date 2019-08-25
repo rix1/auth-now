@@ -10,14 +10,24 @@
   "author": "Rikard Eide <rix1@otovo.com>",
   "license": "MIT",
   "private": false,
-  "scripts": {},
+  "scripts": {
+    "eslint": "eslint . --cache"
+  },
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
-    "mailgun.js": "^2.0.1",
-    "prettier": "^1.18.2"
+    "juice": "^5.2.0",
+    "mailgun.js": "^2.0.1"
   },
   "devDependencies": {
-    "juice": "^5.2.0"
+    "@otovo/eslint-config-otovo": "^3.0.0",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "prettier": "^1.18.2"
   }
 }
