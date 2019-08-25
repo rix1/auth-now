@@ -10,9 +10,13 @@
   "author": "Rikard Eide <rix1@otovo.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {},
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
     "mailgun.js": "^2.0.1",
     "prettier": "^1.18.2"
+  },
+  "devDependencies": {
+    "juice": "^5.2.0"
   }
 }
