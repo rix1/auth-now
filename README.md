@@ -14,9 +14,12 @@ Currently, the API only supports `GET` requests.
 
 - `GET /api/hello?name=world` 👉 Hello world!
 - `GET /api/sendgrid/send/test@info.com` 👉 Send email using [SendGrid](https://sendgrid.com) as provider to test@info.com.
-  Specify subject and body using query parameters. Example `GET /api/sendgrid/send/test@info.com?title=Hello&text=how%20is%20it%20going?
+
+  Specify subject and body using query parameters. Example `GET /api/sendgrid/send/test@info.com?title=Hello&text=how%20is%20it%20going?`
+
 - `GET /api/mailgun/send/test@info.com` 👉 Send email using [MailGun](https://www.mailgun.com) as provider to test@info.com.
-  Specify subject and body using query parameters. Example `GET /api/mailgun/send/test@info.com?title=Hello&text=how%20is%20it%20going?
+
+  Specify subject and body using query parameters. Example `GET /api/mailgun/send/test@info.com?title=Hello&text=how%20is%20it%20going?`
 
 ## Developing
 
