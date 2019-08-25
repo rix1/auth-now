@@ -4,7 +4,7 @@
   "description": "This is the main repo for @tomfa and @rix1's serverless adventure",
   "main": "api/hello.js",
   "engines": {
-    "node": ">=12.8.0"
+    "node": ">=8.x"
   },
   "repository": "https://github.com/rix1/auth-now",
   "author": "Rikard Eide <rix1@otovo.com>",
