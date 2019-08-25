@@ -15,7 +15,7 @@ const generateDataToken = id => {
     id,
     permissions: [permissions.RETRIEVE_DATA, permissions.REFRESH_AUTH_TOKEN],
   };
-  return signPayload({ payload });
+  return signPayload({ payload, expires: '8760h' });
 };
 
 const generateVerifyToken = id => {
@@ -23,7 +23,7 @@ const generateVerifyToken = id => {
     id,
     permissions: [permissions.GENERATE_AUTH_TOKEN],
   };
-  return signPayload({ payload });
+  return signPayload({ payload, expires: '1h' });
 };
 
 module.exports = {
