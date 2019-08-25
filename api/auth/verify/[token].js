@@ -1,23 +1,24 @@
-import {TokenExpiredError} from "jsonwebtoken";
+import { TokenExpiredError } from 'jsonwebtoken';
 
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
-var privateKey = 'SDOSAD';
-var issuer = 'auth-now';
+const privateKey = 'SDOSAD';
+const issuer = 'auth-now';
 
-var signPayload = ({ payload, expires = '1h' }= {}) => jwt.sign(payload, privateKey, { expiresIn: expires, issuer });
-var verify = token => jwt.verify(token, privateKey); // can throw TokenExpiredError
+const signPayload = ({ payload, expires = '1h' } = {}) =>
+  jwt.sign(payload, privateKey, { expiresIn: expires, issuer });
+const verify = token => jwt.verify(token, privateKey); // can throw TokenExpiredError
 
 const generateDataToken = id => {
   const payload = {
     id,
   };
-  return signPayload({payload})
+  return signPayload({ payload });
 };
 
 module.exports = (req, res) => {
   const {
-    query: { token }
+    query: { token },
   } = req;
 
   let data;
@@ -32,7 +33,7 @@ module.exports = (req, res) => {
     return res.status(500).send('Error');
   }
   console.log(data);
-  const newToken = generateDataToken(data.id)
+  const newToken = generateDataToken(data.id);
 
-  return res.status(200).json({token: newToken });
+  return res.status(200).json({ token: newToken });
 };

@@ -1,0 +1,9 @@
+{
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "@otovo/eslint-config-otovo/javascript",
+    "@otovo/eslint-config-otovo/prettier"
+  ]
+}
