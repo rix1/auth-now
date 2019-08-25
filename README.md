@@ -4,90 +4,84 @@
 
 > An exploration into serverless
 
-This is the main repo for @tomfa and @rix1's serverless adventure
+This is the main repo for @tomfa, @andrroy and @rix1's serverless adventure
 
-## Installing / Getting started
+## Api Reference
 
-Todo
+<!-- If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters. -->
 
-Requirements:
+Currently, the API only supports `GET` requests.
 
-- `Node 12.8.0`
-
-<!-- A quick introduction of the minimal setup you need to get a hello world up &
-running.
-
-```shell
-commands here
-```
-
-Here you should say what actually happens when you execute the code above. -->
+- `GET /api/hello?name=world` 👉 Hello world!
+- `GET /api/sendgrid/send/test@info.com` 👉 Send email using [SendGrid](https://sendgrid.com) as provider to test@info.com.
+  Specify subject and body using query parameters. Example `GET /api/sendgrid/send/test@info.com?title=Hello&text=how%20is%20it%20going?
+- `GET /api/mailgun/send/test@info.com` 👉 Send email using [MailGun](https://www.mailgun.com) as provider to test@info.com.
+  Specify subject and body using query parameters. Example `GET /api/mailgun/send/test@info.com?title=Hello&text=how%20is%20it%20going?
 
 ## Developing
 
-Todo
+### Built With
 
-<!-- ### Built With
-
-List main libraries, frameworks used including versions (React, Angular etc...)
+This project defines a series of serverless functions to be hosted by [ZEIT Now](https://zeit.co/docs/v2/serverless-functions/introduction/).
 
 ### Prerequisites
 
-What is needed to set up the dev environment. For instance, global dependencies or any other tools. include download links.
+You will need to have Node and `now` installedd globally:
+
+- `Node >=8.x`
+- `npm install -g now`
 
 ### Setting up Dev
 
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
+To get started, clone the repo and install dependencies:
 
 ```shell
-git clone https://github.com/your/your-project.git
-cd your-project/
-packagemanager install
+git clone https://github.com/rix1/auth-now.git
+cd auth-now/
+yarn install
 ```
-
-And state what happens step-by-step. If there is any virtual environment, local server or database feeder needed, explain here. -->
 
 ### Building
 
-Todo
-
-<!-- If your project needs some additional steps for the developer to build the
-project after some code changes, state them here. for example:
+Before building, you need to copy `dev-template.env` to `.env`
 
 ```shell
-./configure
-make
-make install
+cp dev-template.env .env
 ```
 
-Here again you should state what actually happens when the code above gets
-executed. -->
+ZEIT Now provides an additional command with Now CLI to help you develop
+serverless functions locally by replicating the production environment on Now
+with your localhost.
+
+```shell
+now dev
+```
+
+This supports hot reloading.
 
 ### Deploying / Publishing
 
-Todo
-
-<!-- give instructions on how to build and release a new version
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
+To deploy serverless functions you just have to run
 
 ```shell
-packagemanager deploy your-project -s server.com -u username -p password
+now
 ```
 
-And again you'd need to tell what the previous code actually does. -->
-
-## Versioning
-
-<!-- We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](/tags). -->
+from the root directory of the project. This will upload the repository to
+ZEIT's servers, build the project and serve the serverless API functions at
+https://auth-now.rix1.now.sh/api/.
 
 ## Configuration
 
-Todo
+You can configure the build and deployment settings in `now.json`. See
+[ZEIT docs](https://zeit.co/docs/v2/advanced/configuration/) for API reference
+and more info.
 
-<!-- Here you should write what are all of the configurations a user can enter when
-using the project. -->
+### Aliases
+
+You can easily alias you deployment to different domains. See
+[custom domains](https://zeit.co/docs/v2/custom-domains/#deploying-with-your-domain)
+for more info.
 
 ## Tests
 
@@ -99,10 +93,6 @@ Explain what these tests test and why.
 ```shell
 Give an example
 ``` -->
-
-## Api Reference
-
-<!-- If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters. -->
 
 ## Licensing
 
