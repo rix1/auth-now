@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "This is the main repo for @tomfa and @rix1's serverless adventure",
   "main": "index.js",
+  "engines": {
+    "node": ">=12.8.0"
+  },
   "repository": "https://github.com/rix1/auth-now",
   "author": "Rikard Eide <rix1@otovo.com>",
   "license": "MIT",

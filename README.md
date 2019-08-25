@@ -10,6 +10,10 @@ This is the main repo for @tomfa and @rix1's serverless adventure
 
 Todo
 
+Requirements:
+
+- `Node 12.8.0`
+
 <!-- A quick introduction of the minimal setup you need to get a hello world up &
 running.
 
