@@ -1,12 +1,12 @@
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
-import {verify} from "../../auth";
+import { verify } from '../../auth';
 
 const secretStore = {
   'tomfa@otovo.com': { fisk: 1 },
 };
 
 const getToken = req => {
-  const authHeader = req.headers['Authorization'];
+  const authHeader = req.headers.Authorization;
   if (authHeader !== undefined && authHeader.split(' ').length > 1) {
     return authHeader.split(' ')[1];
   }
@@ -24,7 +24,6 @@ module.exports = (req, res) => {
       return res.status(403).send();
     }
   } catch (err) {
-
     if (err instanceof TokenExpiredError) {
       // TODO: Return 404 instead
       return res.status(401).send();

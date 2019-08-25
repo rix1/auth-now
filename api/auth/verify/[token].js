@@ -1,5 +1,5 @@
 import { TokenExpiredError } from 'jsonwebtoken';
-import auth from "../../../auth";
+import auth from '../../../auth';
 
 module.exports = (req, res) => {
   const {
