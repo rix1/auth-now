@@ -26,9 +26,18 @@ const generateVerifyToken = id => {
   return signPayload({ payload, expires: '1h' });
 };
 
+const getTokenFromRequest = req => {
+  const authHeader = req.headers.Authorization;
+  if (authHeader !== undefined && authHeader.split(' ').length > 1) {
+    return authHeader.split(' ')[1];
+  }
+  return req.query.token;
+};
+
 module.exports = {
   generateDataToken,
   generateVerifyToken,
+  getTokenFromRequest,
   signPayload,
   verify,
 };
