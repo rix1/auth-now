@@ -1,26 +1,19 @@
-const mailgun = require('mailgun.js');
+import * as mailgun from 'mailgun.js';
+import { generateVerifyEmailMessage } from "../../../email";
 
 const client = mailgun.client({
   username: 'api',
   key: process.env.MAILGUN_API_KEY,
 });
-const domain = process.env.MAILGUN_DOMAIN;
+const emailDomain = process.env.MAILGUN_DOMAIN;
 
 function sendMail(msg) {
-  return client.messages.create(domain, msg);
+  return client.messages.create(emailDomain, msg);
 }
 
 module.exports = (req, res) => {
-  const { subject = 'Sample subject', text = 'Sample text' } = req.query;
-  const {
-    query: { to: mail },
-  } = req;
-  const msg = {
-    to: mail,
-    from: `no-reply@${domain}`,
-    subject,
-    text,
-  };
+  const { to: email } = req.query;
+  const msg = generateVerifyEmailMessage({ email, hostDomain: req.headers.host });
   sendMail(msg)
     .then(response => {
       console.log(response);
