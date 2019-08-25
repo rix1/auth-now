@@ -1,4 +1,5 @@
 const sgMail = require('@sendgrid/mail');
+
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const templates = require('../../../email-templates/');
@@ -9,7 +10,7 @@ module.exports = (req, res) => {
     query: { to },
   } = req;
   const msg = {
-    to: to,
+    to,
     from: 'tomas.a.fagerbekk@gmail.com',
     subject,
     text,
@@ -17,8 +18,8 @@ module.exports = (req, res) => {
   };
   sgMail
     .send(msg)
-    .then(response => {
-      res.status(200).json(msg);
+    .then(() => {
+      res.status(200).send(`Email to ${to} schenduled for sending`);
     })
     .catch(err => {
       console.log(err);

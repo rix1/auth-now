@@ -1,20 +1,25 @@
-const mailgun = require("mailgun.js");
+const mailgun = require('mailgun.js');
 
-const client = mailgun.client({username: 'api', key: process.env.MAILGUN_API_KEY});
+const client = mailgun.client({
+  username: 'api',
+  key: process.env.MAILGUN_API_KEY,
+});
 const domain = process.env.MAILGUN_DOMAIN;
 
-function sendMail(msg) { return client.messages.create(domain, msg) };
+function sendMail(msg) {
+  return client.messages.create(domain, msg);
+}
 
 module.exports = (req, res) => {
-  const { subject = "Sample subject", text = "Sample text" } = req.query;
+  const { subject = 'Sample subject', text = 'Sample text' } = req.query;
   const {
-    query: { to: mail }
+    query: { to: mail },
   } = req;
   const msg = {
     to: mail,
     from: `no-reply@${domain}`,
     subject,
-    text
+    text,
   };
   sendMail(msg)
     .then(response => {
@@ -23,6 +28,6 @@ module.exports = (req, res) => {
     })
     .catch(err => {
       console.error(err);
-      res.status(500).send("Error");
+      res.status(500).send('Error');
     });
 };
