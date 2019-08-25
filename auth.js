@@ -1,3 +1,5 @@
+import * as permissions from './permissions';
+
 const jwt = require('jsonwebtoken');
 
 const privateKey = process.env.JWT_PRIVATE_KEY;
@@ -11,12 +13,22 @@ const signPayload = ({ payload, expires = '1h' } = {}) =>
 const generateDataToken = id => {
   const payload = {
     id,
+    permissions: [permissions.RETRIEVE_DATA, permissions.REFRESH_AUTH_TOKEN],
+  };
+  return signPayload({ payload });
+};
+
+const generateVerifyToken = id => {
+  const payload = {
+    id,
+    permissions: [permissions.GENERATE_AUTH_TOKEN],
   };
   return signPayload({ payload });
 };
 
 module.exports = {
-  verify,
-  signPayload,
   generateDataToken,
+  generateVerifyToken,
+  signPayload,
+  verify,
 };
