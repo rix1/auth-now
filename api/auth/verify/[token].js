@@ -1,20 +1,5 @@
 import { TokenExpiredError } from 'jsonwebtoken';
-
-const jwt = require('jsonwebtoken');
-
-const privateKey = 'SDOSAD';
-const issuer = 'auth-now';
-
-const signPayload = ({ payload, expires = '1h' } = {}) =>
-  jwt.sign(payload, privateKey, { expiresIn: expires, issuer });
-const verify = token => jwt.verify(token, privateKey); // can throw TokenExpiredError
-
-const generateDataToken = id => {
-  const payload = {
-    id,
-  };
-  return signPayload({ payload });
-};
+import auth from "../../../auth";
 
 module.exports = (req, res) => {
   const {
@@ -23,7 +8,7 @@ module.exports = (req, res) => {
 
   let data;
   try {
-    data = verify(token);
+    data = auth.verify(token);
   } catch (err) {
     if (err instanceof TokenExpiredError) {
       // TODO: Return 404 instead
@@ -33,7 +18,7 @@ module.exports = (req, res) => {
     return res.status(500).send('Error');
   }
   console.log(data);
-  const newToken = generateDataToken(data.id);
+  const newToken = auth.generateDataToken(data.id);
 
   return res.status(200).json({ token: newToken });
 };

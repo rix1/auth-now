@@ -1,10 +1,5 @@
 import { JsonWebTokenError, TokenExpiredError } from 'jsonwebtoken';
-
-const jwt = require('jsonwebtoken');
-
-const privateKey = 'SDOSAD';
-
-const verify = token => jwt.verify(token, privateKey); // can throw TokenExpiredError
+import {verify} from "../../auth";
 
 const secretStore = {
   'tomfa@otovo.com': { fisk: 1 },
@@ -23,6 +18,7 @@ module.exports = (req, res) => {
       return res.status(403).send();
     }
   } catch (err) {
+
     if (err instanceof TokenExpiredError) {
       // TODO: Return 404 instead
       return res.status(401).send();
