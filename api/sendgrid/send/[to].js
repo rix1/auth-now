@@ -11,7 +11,7 @@ module.exports = (req, res) => {
   } = req;
   const msg = {
     to,
-    from: 'tomas.a.fagerbekk@gmail.com',
+    from: process.env.SENDGRID_FROM_EMAIL,
     subject,
     text,
     html: templates.standardTemplate,
