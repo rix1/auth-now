@@ -74,6 +74,16 @@ from the root directory of the project. This will upload the repository to
 ZEIT's servers, build the project and serve the serverless API functions at
 https://auth-now.rix1.now.sh/api/.
 
+#### Secrets
+
+Before deploying, you need to set secrets in your production environment:
+
+```shell
+now secrets add <secret-name> <secret-value>
+```
+
+See [Now's docs](https://zeit.co/docs/v2/environment-variables-and-secrets/) and their [troubleshooting guide](https://github.com/zeit/now/blob/master/errors/missing-env-file.md) for more information.
+
 ## Configuration
 
 You can configure the build and deployment settings in `now.json`. See
