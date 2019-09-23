@@ -21,7 +21,9 @@ module.exports = (req, res) => {
   sendMail(msg)
     .then(response => {
       console.log(response);
-      res.status(200).json(msg);
+      res.status(200).json({
+        msg: `Authentication email sent to ${email}. Please check your email for further instructions`,
+      });
     })
     .catch(err => {
       console.error(err);

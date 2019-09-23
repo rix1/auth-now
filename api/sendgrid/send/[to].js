@@ -19,7 +19,9 @@ module.exports = (req, res) => {
   sgMail
     .send(msg)
     .then(() => {
-      res.status(200).send(`Email to ${to} schenduled for sending`);
+      res.status(200).json({
+        msg: `Authentication email sent to ${to}. Please check your email for further instructions`,
+      });
     })
     .catch(err => {
       console.log(err);
