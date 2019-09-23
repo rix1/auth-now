@@ -52,8 +52,19 @@ Before building, you need to copy `dev-template.env` to `.env`
 cp dev-template.env .env
 ```
 
-ZEIT Now provides an additional command with Now CLI to help you develop
-serverless functions locally by replicating the production environment on Now
+#### API keys
+
+You need to create API keys for the email providers you wish to support. Currently [SendGrid](https://sendgrid.com/docs/ui/account-and-settings/api-keys/) and [Mailgun](https://documentation.mailgun.com/en/latest/quickstart.html) is supported.
+
+#### Private JWT Key
+
+You also need to generate a private JWT key to sign the JWT payload. Just create a random passphrase 1Password or OpenSSL:
+
+```shell
+openssl rand -base64 32
+```
+
+ZEIT Now provides an additional command with Now CLI to help you develop serverless functions locally by replicating the production environment on Now
 with your localhost.
 
 ```shell
