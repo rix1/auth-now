@@ -7,7 +7,7 @@ const issuer = process.env.JWT_ISSUER || 'auth-now';
 
 const verify = token => jwt.verify(token, privateKey);
 
-const signPayload = ({ payload, expires = '1h' } = {}) =>
+const signPayload = ({ payload, expires = '1h' }) =>
   jwt.sign(payload, privateKey, { expiresIn: expires, issuer });
 
 const generateDataToken = id => {
