@@ -4,7 +4,7 @@ const EMAIL_DOMAIN = process.env.MAILGUN_DOMAIN;
 const generateVerifyEmailMessage = ({ email, hostDomain }) => {
   const subject = 'Welcome to AuthNow';
   const token = auth.generateVerifyToken(email);
-  const url = `http://${hostDomain}/auth/verify/${token}`;
+  const url = `http://${hostDomain}/api/auth/verify/${token}`;
   const text =
     'Welcome to AuthNow! \n\n' +
     'To verify this email, please click the link below:\n' +
@@ -19,6 +19,7 @@ const generateVerifyEmailMessage = ({ email, hostDomain }) => {
     from: `no-reply@${EMAIL_DOMAIN}`,
     subject,
     text,
+    url,
   };
 };
 
