@@ -12,7 +12,8 @@
   "private": false,
   "scripts": {
     "eslint": "eslint . --cache",
-    "test": "npm run eslint"
+    "test": "npm run eslint && jest",
+    "tdd": "jest --watch"
   },
   "husky": {
     "hooks": {
@@ -35,6 +36,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^3.0.4",
+    "jest": "^24.9.0",
     "prettier": "^1.18.2"
   }
 }
