@@ -1,7 +1,7 @@
 const { JsonWebTokenError, TokenExpiredError } = require('jsonwebtoken');
 
-const auth = require('../../auth');
-const permissions = require('../../permissions');
+const auth = require('../../src/auth');
+const permissions = require('../../src/permissions');
 
 const secretStore = {
   'tomfa@otovo.com': { fisk: 1 },

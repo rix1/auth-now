@@ -2,7 +2,7 @@ const sgMail = require('@sendgrid/mail');
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-const templates = require('../../../email-templates/');
+const templates = require('../../../src/email/');
 
 module.exports = (req, res) => {
   const { subject = 'Sample subject', text = 'Sample text' } = req.query;

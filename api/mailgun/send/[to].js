@@ -1,6 +1,6 @@
 const mailgun = require('mailgun.js');
 
-const { generateVerifyEmailMessage } = require('../../../email');
+const { generateVerifyEmailMessage } = require('../../../src/email/email');
 
 const client = mailgun.client({
   username: 'api',
