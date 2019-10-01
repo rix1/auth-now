@@ -3,7 +3,7 @@ const auth = require('../../auth');
 const generateVerifyEmail = ({ email, hostDomain }) => {
   const subject = 'Welcome to AuthNow';
   const token = auth.generateVerifyToken(email);
-  const url = `http://${hostDomain}/api/auth/verify/${token}`;
+  const url = `http://${hostDomain}/api/verify/${token}`;
   const text =
     'Welcome to AuthNow! \n\n' +
     'To verify this email, please click the link below:\n' +

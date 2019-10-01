@@ -1,7 +1,7 @@
 const { JsonWebTokenError, TokenExpiredError } = require('jsonwebtoken');
-const auth = require('../../../src/auth');
-const log = require('../../../src/log');
-const permissions = require('../../../src/permissions');
+const auth = require('../../src/auth');
+const log = require('../../src/log');
+const permissions = require('../../src/permissions');
 
 module.exports = (req, res) => {
   const token = auth.getTokenFromRequest(req);
