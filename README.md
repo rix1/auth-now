@@ -12,10 +12,6 @@ This is the main repo for @tomfa, @andrroy and @rix1's serverless adventure
 
 Currently, the API only supports `GET` requests.
 
-- `GET /api/sendgrid/send/test@info.com` 👉 Send email using [SendGrid](https://sendgrid.com) as provider to test@info.com.
-
-  Specify subject and body using query parameters. Example `GET /api/sendgrid/send/test@info.com?title=Hello&text=how%20is%20it%20going?`
-
 - `GET /api/mailgun/send/test@info.com` 👉 Send email using [MailGun](https://www.mailgun.com) as provider to test@info.com.
 
   Specify subject and body using query parameters. Example `GET /api/mailgun/send/test@info.com?title=Hello&text=how%20is%20it%20going?`
@@ -53,7 +49,7 @@ cp dev-template.env .env
 
 #### API keys
 
-You need to create API keys for the email providers you wish to support. Currently [SendGrid](https://sendgrid.com/docs/ui/account-and-settings/api-keys/) and [Mailgun](https://documentation.mailgun.com/en/latest/quickstart.html) is supported.
+You need to create API keys for the email providers you wish to support. Currently only [Mailgun](https://documentation.mailgun.com/en/latest/quickstart.html) is supported.
 
 #### Private JWT Key
 
