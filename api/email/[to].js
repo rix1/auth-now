@@ -1,8 +1,7 @@
 const generateVerifyEmail = require('../../src/email/plaintext/generateVerifyEmail');
+const log = require('../../src/log');
 
 const client = require('./_mailgunClient');
-
-const log = console;
 
 module.exports = (req, res) => {
   const { to: email } = req.query;
