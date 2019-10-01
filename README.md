@@ -12,7 +12,7 @@ This is the main repo for @tomfa, @andrroy and @rix1's serverless adventure
 
 Currently, the API only supports `GET` requests.
 
-- `GET /api/mailgun/send/test@info.com` 👉 Send email using [MailGun](https://www.mailgun.com) as provider to test@info.com.
+- `GET /api/email/test@info.com` 👉 Send email using [Mailgun](https://www.mailgun.com) as provider to test@info.com.
 
   Specify subject and body using query parameters. Example `GET /api/mailgun/send/test@info.com?title=Hello&text=how%20is%20it%20going?`
 
