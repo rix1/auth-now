@@ -12,7 +12,6 @@ This is the main repo for @tomfa, @andrroy and @rix1's serverless adventure
 
 Currently, the API only supports `GET` requests.
 
-- `GET /api/hello?name=world` 👉 Hello world!
 - `GET /api/sendgrid/send/test@info.com` 👉 Send email using [SendGrid](https://sendgrid.com) as provider to test@info.com.
 
   Specify subject and body using query parameters. Example `GET /api/sendgrid/send/test@info.com?title=Hello&text=how%20is%20it%20going?`
