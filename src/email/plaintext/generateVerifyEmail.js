@@ -1,7 +1,6 @@
-const auth = require('../auth');
+const auth = require('../../auth');
 
-const EMAIL_DOMAIN = process.env.MAILGUN_DOMAIN;
-const generateVerifyEmailMessage = ({ email, hostDomain }) => {
+const generateVerifyEmail = ({ email, hostDomain }) => {
   const subject = 'Welcome to AuthNow';
   const token = auth.generateVerifyToken(email);
   const url = `http://${hostDomain}/api/auth/verify/${token}`;
@@ -16,14 +15,11 @@ const generateVerifyEmailMessage = ({ email, hostDomain }) => {
     'Best regards from AuthNow';
   return {
     to: email,
-    from: `no-reply@${EMAIL_DOMAIN}`,
+    from: `no-reply@${process.env.MAILGUN_DOMAIN}`,
     subject,
     text,
     url,
   };
 };
 
-module.exports = {
-  EMAIL_DOMAIN,
-  generateVerifyEmailMessage,
-};
+module.exports = generateVerifyEmail;

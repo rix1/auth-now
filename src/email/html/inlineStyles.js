@@ -1,8 +1,5 @@
 const fs = require('fs');
-const path = require('path');
 const juice = require('juice');
-
-const standardTemplate = path.join(__dirname, 'standard.html');
 
 function inlineStyles(filePath) {
   const file = fs.readFileSync(filePath, 'utf8');
@@ -11,6 +8,4 @@ function inlineStyles(filePath) {
   return juice(file);
 }
 
-module.exports = {
-  standardTemplate: inlineStyles(standardTemplate),
-};
+module.exports = inlineStyles;
