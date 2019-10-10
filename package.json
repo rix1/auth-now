@@ -21,7 +21,6 @@
     }
   },
   "dependencies": {
-    "@sendgrid/mail": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
     "juice": "^5.2.0",
     "mailgun-js": "^0.22.0"

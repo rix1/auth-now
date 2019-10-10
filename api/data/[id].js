@@ -1,6 +1,7 @@
 const { JsonWebTokenError, TokenExpiredError } = require('jsonwebtoken');
 
 const auth = require('../../src/auth');
+const log = require('../../src/log');
 const permissions = require('../../src/permissions');
 
 const secretStore = {
@@ -31,7 +32,7 @@ module.exports = (req, res) => {
     if (err instanceof JsonWebTokenError) {
       return res.status(400).send('Invalid JWT format.');
     }
-    console.log(err);
+    log.error(err);
     return res.status(500).send('Error');
   }
 

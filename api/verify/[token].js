@@ -1,7 +1,7 @@
 const { JsonWebTokenError, TokenExpiredError } = require('jsonwebtoken');
-
-const auth = require('../../../src/auth');
-const permissions = require('../../../src/permissions');
+const auth = require('../../src/auth');
+const log = require('../../src/log');
+const permissions = require('../../src/permissions');
 
 module.exports = (req, res) => {
   const token = auth.getTokenFromRequest(req);
@@ -20,7 +20,7 @@ module.exports = (req, res) => {
         .status(400)
         .json({ status: 400, message: 'Invalid JWT format.' });
     }
-    console.log(err);
+    log.error(err);
     return res
       .status(500)
       .json({ status: 500, message: 'Internal server error' });
